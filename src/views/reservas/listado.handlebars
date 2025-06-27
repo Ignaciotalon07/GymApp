@@ -1,0 +1,42 @@
+{{> nav}}
+<div class="container-listadoReserva {{#if (eq usuario.rol "admin")}}admin{{/if}}">
+  {{#if reservas.length}}
+    <h2 class="titulo">
+       {{#if (eq usuario.rol "admin")}}
+        Estas son todas las reservas
+      {{else}}
+          {{usuario.nombre}}, estas son tus reservas!
+       {{/if}}
+    </h2>
+    <ul class="lista-reservas">
+      {{#each reservas}}
+        <li class="reserva-item">
+          {{#if ../usuario.rol}}
+            {{#if (eq ../usuario.rol "admin")}}
+              <div><strong>Usuario:</strong> {{this.usuarioId.nombre}}</div>
+            {{/if}}
+          {{/if}}
+
+          <div>
+            <strong>Fecha y hora:</strong>
+            {{formatearFecha this.fechaHora}}
+          </div>
+          <div>
+            <strong>Estado:</strong>
+            {{this.estado}}
+          </div>
+          <div>
+            <strong>Para:</strong> MUSCULACIÓN
+          </div>
+          <form action="/reservas/eliminarreserva/{{this._id}}" method="GET">
+            <button type="submit" class="btn-cancelar">Cancelar Reserva</button>
+          </form>
+        </li>
+      {{/each}}
+    </ul>
+  {{else}}
+    <h3>No tenés reservas por ahora.</h3>
+  {{/if}}
+
+  <a href="/reservas/nuevareserva" class="btn-nueva">Reservar nuevo turno</a>
+</div>

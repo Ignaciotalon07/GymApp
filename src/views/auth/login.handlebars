@@ -1,0 +1,28 @@
+<div class="container-formLogin">
+  <h1>Login</h1>
+
+  {{#if error}}
+    <div class="mensaje-error">{{error}}</div>
+  {{/if}}
+
+  <form action="/login" method="POST" class="form-login">
+    <div class="container-email">
+      <label for="email">Email</label>
+      <input
+        type="email"
+        name="email"
+        class="form-control"
+        required
+        value="{{email}}"
+      />
+    </div>
+    <div class="container-pass">
+      <label for="password">Contraseña</label>
+      <input type="password" name="password" class="form-control" required />
+    </div>
+    <button type="submit" class="btn-inicio">Iniciar sesión</button>
+  </form>
+
+  <p>¿No tenés cuenta? registrate en menos de 1 minuto!
+    <a href="/register">Registrarse</a></p>
+</div>

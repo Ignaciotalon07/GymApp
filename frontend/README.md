@@ -1,12 +1,45 @@
-# React + Vite
+# GymApp 🏋️‍♂️
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**GymApp** es una aplicación web diseñada para facilitar la gestión de turnos en gimnasios, ofreciendo a los usuarios una plataforma intuitiva para reservar, consultar y cancelar sus reservas. Además, cuenta con un chat integrado con inteligencia artificial (IA) que recomienda planes personalizados de entrenamiento y alimentación saludable para mejorar el rendimiento y bienestar de los usuarios.
 
-Currently, two official plugins are available:
+> 🔐 Autenticación segura + 🗓️ Gestión eficiente de reservas + 🤖 Recomendaciones inteligentes = 💪 La mejor experiencia fitness digital
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## ✨ Funcionalidades
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Inicio de sesión de usuario (JWT)
+- Crear reserva eligiendo día y horario
+- Ver todas las reservas propias
+- Eliminar una reserva
+- Usuario admin ve todas las reservas
+- Chat con IA integrado (usando Groq) que recomienda planes de entrenamiento personalizados y alimentación saludable
+
+---
+
+## 🧰 Tecnologías utilizadas
+
+### Frontend
+
+- React
+- Tailwind CSS
+- SweetAlert2
+
+### Backend
+
+- Node.js + Express
+- MongoDB + Mongoose
+- JSON Web Tokens (JWT)
+- Dotenv
+- Groq (para la integración con la IA del chat)
+
+---
+
+## 🛠️ Instalación y uso
+
+### 1. Cloná el repositorio
+
+```bash
+git clone https://github.com/tu-usuario/gymapp.git
+cd gymapp
+```

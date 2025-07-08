@@ -9,6 +9,12 @@ export default function ChatFlotante() {
   const [mensajes, setMensajes] = useState([]);
   const mensajesEndRef = useRef(null);
 
+  useEffect(() => {
+    if (mensajesEndRef.current) {
+      mensajesEndRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [mensajes]);
+
   if (location.pathname === "/" || location.pathname === "/register") {
     return null;
   }
@@ -34,12 +40,6 @@ export default function ChatFlotante() {
       console.error("Error:", err);
     }
   };
-
-  useEffect(() => {
-    if (mensajesEndRef.current) {
-      mensajesEndRef.current.scrollIntoView({ behavior: "smooth" });
-    }
-  }, [mensajes]);
 
   return (
     <div className="fixed bottom-6 right-6 z-50">
@@ -70,7 +70,6 @@ export default function ChatFlotante() {
             </button>
           </div>
 
-          {/* Contenedor de mensajes con scroll y altura fija */}
           <div className="flex-1 p-3 space-y-2 overflow-y-auto flex flex-col scrollbar-thin scrollbar-thumb-gray-400">
             {mensajes.map((m, i) => (
               <div

@@ -1,7 +1,0 @@
-//ITINERARIO RESERVAS GYM
-
-1)- conectar react con mi aplicacion backend (esto lleva tiempo, un componente a la vez)
-2)- hacer un home o modificar login para que sea un home mas profesional
-3)- hacer la pagina responsive para mobile
-4)- desplegarla en vercel una vez terminada
-5)- Agregar IA (chat que te hace rutinas y te recomienda comidas)

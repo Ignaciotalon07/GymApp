@@ -1,32 +1,32 @@
 const Reserva = require("../models/reservation.model.js");
 require("../middlewares/auth.js");
 
-// GET: Mostrar todas las reservas de un usuario
+//CON ESTO VEMOS LAS RESERVAS (TODAS SI SOS ADM)
 const obtenerReservas = async (req, res) => {
   try {
     let reservas;
 
     if (req.usuario.rol === "admin") {
-      // Admin ve todas las reservas
       reservas = await Reserva.find().populate("usuarioId");
     } else {
-      // Cliente solo ve sus reservas
       reservas = await Reserva.find({ usuarioId: req.usuario._id });
     }
 
-    res.render("reservas/listado", {
+    res.json({
       reservas,
-      titulo: "Mis reservas",
-      usuario: req.usuario,
-      nombre: req.usuario.nombre,
+      usuario: {
+        nombre: req.usuario.nombre,
+        rol: req.usuario.rol,
+        _id: req.usuario._id,
+      },
     });
   } catch (error) {
-    console.error("Error al obtener reservas:", error);
-    res.status(500).send("Error al obtener reservas");
+    console.error("Error al obtener reservas (API):", error);
+    res.status(500).json({ error: "Error al obtener reservas" });
   }
 };
 
-// POST: Crear nueva reserva
+//CREAMOS RESERVA
 const crearReserva = async (req, res) => {
   try {
     console.log("Body recibido:", req.body);
@@ -45,22 +45,29 @@ const crearReserva = async (req, res) => {
     });
 
     await nuevaReserva.save();
-    res.redirect("/reservas");
+    res.status(201).json({ mensaje: "Reserva creada con éxito" });
   } catch (error) {
     console.error("Error al crear reserva:", error.message);
     res.status(500).send("Error al crear reserva");
   }
 };
 
-// POST o DELETE: Cancelar reserva
+// ELIMINAMOS RESERVA
 const cancelarReserva = async (req, res) => {
   try {
     const { id } = req.params;
-    await Reserva.findByIdAndDelete(id);
-    res.redirect("/reservas");
+
+    // Intentamos eliminar la reserva
+    const resultado = await Reserva.findByIdAndDelete(id);
+
+    if (!resultado) {
+      return res.status(404).json({ error: "Reserva no encontrada" });
+    }
+
+    res.status(200).json({ mensaje: "Reserva cancelada con éxito" });
   } catch (error) {
     console.error("Error al cancelar reserva:", error);
-    res.status(500).send("Error al cancelar reserva");
+    res.status(500).json({ error: "Error al cancelar la reserva" });
   }
 };
 

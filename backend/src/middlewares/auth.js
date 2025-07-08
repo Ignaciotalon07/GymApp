@@ -5,6 +5,8 @@ const verificarToken = async (req, res, next) => {
   const token = req.cookies.token || req.headers.authorization?.split(" ")[1];
 
   if (!token) {
+    console.log("❌ No se encontró token. Cookies:", req.cookies);
+
     return res.status(401).send("Acceso denegado. No hay token.");
   }
 

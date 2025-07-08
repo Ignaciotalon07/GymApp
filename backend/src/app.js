@@ -1,10 +1,7 @@
 const express = require("express");
 const app = express();
-const exphbs = require("express-handlebars");
 const PUERTO = process.env.PORT || 8080;
 const path = require("path");
-const authRoutes = require("./routes/authRoutes.js");
-const reservaRoutes = require("./routes/reservaRoutes.js");
 const cookieParser = require("cookie-parser");
 require("moment/locale/es");
 const moment = require("moment");
@@ -18,6 +15,15 @@ dotenv.config();
 //CONEXION A LA DB
 const conectarDB = require("./config/database");
 conectarDB();
+
+//CORS para permitir que React haga peticiones
+const cors = require("cors");
+app.use(
+  cors({
+    origin: "http://localhost:5173", // donde corre React
+    credentials: true, // si querés enviar cookies/tokens
+  })
+);
 
 //MIDDLEWARE
 app.use(express.json());
@@ -47,31 +53,14 @@ app.use(async (req, res, next) => {
   next();
 });
 
-//EXPRESS-HANDLEBARS
-const hbs = exphbs.create({
-  defaultLayout: "main",
-  runtimeOptions: {
-    allowProtoPropertiesByDefault: true,
-    allowProtoMethodsByDefault: true,
-  },
-  helpers: {
-    formatearFecha: function (fecha) {
-      return (
-        moment(fecha).locale("es").format("D [de] MMMM YYYY, HH:mm") + "hs"
-      );
-    },
-    eq: function (a, b) {
-      return a === b;
-    },
-  },
-});
-app.engine("handlebars", hbs.engine);
-app.set("view engine", "handlebars");
-app.set("views", path.join(__dirname, "views"));
+//RUTAS PARA REACT
+const apiAuthRoutes = require("./routes/apiAuthRoutes");
+const apiReservaRoutes = require("./routes/apiReservaRoutes");
+const apiChatRoutes = require("./routes/apiChatRoutes");
 
-// RUTAS
-app.use("/", authRoutes); // Ahora las rutas serán /auth/register y /auth/login
-app.use("/reservas", reservaRoutes); //
+app.use("/api/auth", apiAuthRoutes);
+app.use("/api/reservas", apiReservaRoutes);
+app.use("/api/chat", apiChatRoutes);
 
 //LISTEN
 app.listen(PUERTO, () => {

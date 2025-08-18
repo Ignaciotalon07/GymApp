@@ -7,6 +7,7 @@ require("moment/locale/es");
 const moment = require("moment");
 const jwt = require("jsonwebtoken");
 const Usuario = require("./models/user.model.js");
+const { startReservationCleaner } = require("./utils/reservaCron.js");
 
 //CONFIGURACION PARA VARIABLES DE ENTORNO
 const dotenv = require("dotenv");
@@ -15,6 +16,9 @@ dotenv.config();
 //CONEXION A LA DB
 const conectarDB = require("./config/database");
 conectarDB();
+
+//ELIMINAR RESERVAS AUTOMATICAMENTE
+startReservationCleaner();
 
 //CORS para permitir que React haga peticiones
 const cors = require("cors");

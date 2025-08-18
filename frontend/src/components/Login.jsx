@@ -14,7 +14,7 @@ export default function Login() {
     try {
       const response = await fetch("http://localhost:8080/api/auth/login", {
         method: "POST",
-        credentials: "include", // ¡Importante para que mande la cookie!
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
         },

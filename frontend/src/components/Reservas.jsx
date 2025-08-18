@@ -56,7 +56,7 @@ export default function Reservas() {
       >
         {reservas.length > 0 ? (
           <>
-            <h2 className="text-2xl font-bold text-white mb-6 text-center">
+            <h2 className="text-2xl font-bold text-white mb-3 p-5 text-center">
               {usuario?.rol === "admin"
                 ? "Estas son todas las reservas"
                 : `${usuario?.nombre}, estas son tus reservas!`}

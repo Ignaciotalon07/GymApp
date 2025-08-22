@@ -15,9 +15,7 @@ export default function Login() {
       const response = await fetch("http://localhost:8080/api/auth/login", {
         method: "POST",
         credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
       });
 
@@ -27,7 +25,7 @@ export default function Login() {
         return;
       }
 
-      // Luego del login exitoso, traemos el usuario
+      // Traemos la info del usuario
       const userRes = await fetch("http://localhost:8080/api/auth/me", {
         credentials: "include",
       });
@@ -39,8 +37,8 @@ export default function Login() {
 
       const userData = await userRes.json();
 
-      // Navegamos a /reservas y pasamos el usuario por estado
-      navigate("/reservas", { state: { usuario: userData.usuario } });
+      // Redirigimos a /inicio y pasamos el usuario como state
+      navigate("/inicio", { state: { usuario: userData.usuario } });
     } catch (err) {
       console.error("Error en login:", err);
       setError("Error al conectar con el servidor");
@@ -72,8 +70,8 @@ export default function Login() {
 
       {/* LADO DERECHO - FORMULARIO */}
       <div className="w-1/2 flex items-center justify-center ">
-        <div className="flex flex-col items-center justify-center w-full min-h-screen max-w-md bg-[#1f2937]/97 backdrop-blur-md  gap-8 shadow-lg">
-          <h1 className="text-3xl font-bold text-center text-white ">
+        <div className="flex flex-col items-center justify-center w-full min-h-screen max-w-md bg-[#1f2937]/97 backdrop-blur-md gap-8 shadow-lg">
+          <h1 className="text-3xl font-bold text-center text-white">
             Iniciar sesión
           </h1>
 

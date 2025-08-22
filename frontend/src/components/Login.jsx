@@ -55,7 +55,7 @@ export default function Login() {
       }}
     >
       {/* LADO IZQUIERDO */}
-      <div className="w-1/2 flex items-center justify-center bg-black/60">
+      <div className="w-1/2 flex items-center justify-center">
         <div className="max-w-md px-10 text-left">
           <h2 className="text-5xl text-white font-extrabold mb-4 leading-tight drop-shadow-lg">
             Entrená con disciplina.

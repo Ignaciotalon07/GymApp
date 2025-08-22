@@ -1,14 +1,35 @@
-import React from "react";
-import { useLocation } from "react-router-dom";
-import Nav from "./Nav"; // tu componente Nav
+import React, { useState, useEffect } from "react";
+import Nav from "./Nav";
 import gymBanner from "../assets/profile2.svg";
 import exercise1 from "../assets/profile2.svg";
 import exercise2 from "../assets/profile2.svg";
 import exercise3 from "../assets/profile2.svg";
 
 export default function Inicio() {
-  const location = useLocation();
-  const usuario = location.state?.usuario; // viene del login
+  const [usuario, setUsuario] = useState(null);
+
+  useEffect(() => {
+    const fetchUsuario = async () => {
+      try {
+        const res = await fetch("http://localhost:8080/api/auth/me", {
+          credentials: "include",
+        });
+        if (!res.ok) {
+          setUsuario(null);
+          return;
+        }
+        const data = await res.json();
+        setUsuario(data.usuario);
+      } catch (err) {
+        console.error("Error al traer usuario:", err);
+        setUsuario(null);
+      }
+    };
+
+    fetchUsuario();
+  }, []);
+
+  if (!usuario) return <p>Cargando...</p>; // opcional, evita que Nav se rompa
 
   return (
     <>
@@ -25,7 +46,8 @@ export default function Inicio() {
           />
           <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center rounded-lg">
             <h1 className="text-white text-3xl md:text-5xl font-bold text-center">
-              Bienvenido a GymMaster{usuario ? `, ${usuario.nombre}` : ""}
+              Hola{usuario ? ` ${usuario.nombre}` : ""}, <br></br> Bienvenido a
+              GymMaster!
             </h1>
           </div>
         </section>

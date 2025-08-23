@@ -29,7 +29,7 @@ export default function Inicio() {
     fetchUsuario();
   }, []);
 
-  if (!usuario) return <p>Cargando...</p>; // opcional, evita que Nav se rompa
+  if (!usuario) return;
 
   return (
     <>

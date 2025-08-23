@@ -62,7 +62,7 @@ export default function Nav({ usuario }) {
           onClick={() => navigate("/reservas")}
           className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-900 transition-colors cursor-pointer"
         >
-          Reservar Clase
+          {usuario?.rol === "admin" ? "Ver Reservas" : `Reservar clase`}
         </button>
         <button onClick={() => setMenuOpen(true)}>
           <img
@@ -97,7 +97,7 @@ export default function Nav({ usuario }) {
           </li>
           <li>
             <a
-              href="#"
+              href="/reservas"
               className="hover:text-red-600 transition-colors duration-200"
             >
               Mis Reservas
@@ -108,7 +108,39 @@ export default function Nav({ usuario }) {
               href="#"
               className="hover:text-red-600 transition-colors duration-200"
             >
-              Configuración
+              Horarios
+            </a>
+          </li>
+          <li>
+            <a
+              href="#"
+              className="hover:text-red-600 transition-colors duration-200"
+            >
+              Entrenadores
+            </a>
+          </li>
+          <li>
+            <a
+              href="#"
+              className="hover:text-red-600 transition-colors duration-200"
+            >
+              Ubicacion
+            </a>
+          </li>
+          <li>
+            <a
+              href="#"
+              className="hover:text-red-600 transition-colors duration-200"
+            >
+              Sobre Nosotros
+            </a>
+          </li>
+          <li>
+            <a
+              href="#"
+              className="hover:text-red-600 transition-colors duration-200"
+            >
+              Contactanos
             </a>
           </li>
           <li>

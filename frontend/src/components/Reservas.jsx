@@ -58,7 +58,7 @@ export default function Reservas() {
           <>
             <h2 className="text-2xl font-bold text-white mb-3 p-5 text-center">
               {usuario?.rol === "admin"
-                ? "Estas son todas las reservas"
+                ? "Estas son todas las reservas de los usuarios"
                 : `${usuario?.nombre}, estas son tus reservas!`}
             </h2>
 

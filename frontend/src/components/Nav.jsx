@@ -36,21 +36,21 @@ export default function Nav({ usuario }) {
       <div className="flex space-x-8 text-lg font-medium">
         <button
           onClick={() => navigate("/inicio")}
-          className="px-4 py-2 text-white hover:text-red-500 transition-colors duration-300"
+          className="cursor-pointer px-4 py-2 text-white hover:text-red-500 transition-colors duration-300"
         >
           Inicio
         </button>
 
         <button
           onClick={() => scrollToSection("planes")}
-          className="px-4 py-2 text-white hover:text-red-500 transition-colors duration-300"
+          className="cursor-pointer px-4 py-2 text-white hover:text-red-500 transition-colors duration-300"
         >
           Planes
         </button>
 
         <button
           onClick={() => scrollToSection("contacto")}
-          className="px-4 py-2 text-white hover:text-red-500 transition-colors duration-300"
+          className="cursor-pointer px-4 py-2 text-white hover:text-red-500 transition-colors duration-300"
         >
           Contacto
         </button>
@@ -60,10 +60,15 @@ export default function Nav({ usuario }) {
       <div className="flex items-center space-x-4">
         <button
           onClick={() => navigate("/reservas")}
-          className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-900 transition-colors cursor-pointer"
+          className={`px-4 py-2 rounded transition-colors cursor-pointer ${
+            usuario?.rol === "admin"
+              ? "bg-amber-400 hover:bg-amber-600 text-black"
+              : "bg-red-500 hover:bg-red-700 text-white"
+          }`}
         >
-          {usuario?.rol === "admin" ? "Ver Reservas" : `Reservar clase`}
+          {usuario?.rol === "admin" ? "Ver Reservas" : "Reservar clase"}
         </button>
+
         <button onClick={() => setMenuOpen(true)}>
           <img
             src={profile2}
@@ -125,6 +130,14 @@ export default function Nav({ usuario }) {
               className="hover:text-red-600 transition-colors duration-200"
             >
               Ubicacion
+            </a>
+          </li>
+          <li>
+            <a
+              href="#"
+              className="hover:text-red-600 transition-colors duration-200"
+            >
+              Preguntas Frecuentes
             </a>
           </li>
           <li>

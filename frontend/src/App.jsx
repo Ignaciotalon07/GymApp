@@ -6,11 +6,11 @@ import Nav from "./components/Nav";
 import NuevaReserva from "./components/NuevaReserva";
 import ChatFlotante from "./components/ChatFlotante.jsx";
 import Inicio from "./components/Inicio.jsx";
+import Footer from "./components/Footer.jsx";
 
 function App() {
   return (
     <Router>
-      <Nav />
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
@@ -19,13 +19,27 @@ function App() {
           element={
             <>
               <Nav />
-              <Inicio />{" "}
-              {/* Aquí tu sección con ejercicios, planes, consejos */}
+              <Inicio />
+              <Footer />
             </>
           }
         />
-        <Route path="/reservas" element={<Reservas />} />
-        <Route path="/reservas/nuevareserva" element={<NuevaReserva />} />
+        <Route
+          path="/reservas"
+          element={
+            <>
+              <Reservas /> <Footer />{" "}
+            </>
+          }
+        />
+        <Route
+          path="/reservas/nuevareserva"
+          element={
+            <>
+              <NuevaReserva /> <Footer />
+            </>
+          }
+        />
       </Routes>
       <ChatFlotante />
     </Router>

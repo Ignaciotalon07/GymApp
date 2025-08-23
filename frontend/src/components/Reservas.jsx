@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import Nav from "./Nav.jsx";
+import reservas from "../assets/reservas.jpg";
 
 export default function Reservas() {
   const location = useLocation();
@@ -50,62 +51,71 @@ export default function Reservas() {
       {usuario && <Nav usuario={usuario} />}
 
       <div
-        className={`max-w-4xl mx-auto py-10 px-4 ${
+        className={`relative max-w-6xl mx-auto py-40 px-6 min-h-screen rounded-lg shadow-lg overflow-hidden ${
           usuario?.rol === "admin" ? "bg-gray-900" : "bg-gray-800"
-        } rounded-lg shadow-lg`}
+        }`}
       >
-        {reservas.length > 0 ? (
-          <>
-            <h2 className="text-2xl font-bold text-white mb-3 p-5 text-center">
-              {usuario?.rol === "admin"
-                ? "Estas son todas las reservas de los usuarios"
-                : `${usuario?.nombre}, estas son tus reservas!`}
-            </h2>
+        {/* Imagen de fondo con overlay */}
+        <div
+          className="absolute inset-0 bg-cover bg-center opacity-20"
+          style={{
+            backgroundImage: `url(${reservas})`,
+          }}
+        ></div>
+        <div className="relative z-10">
+          {reservas.length > 0 ? (
+            <>
+              <h2 className="text-3xl font-bold text-white mb-6 text-center">
+                {usuario?.rol === "admin"
+                  ? "Estas son todas las reservas de los usuarios"
+                  : `${usuario?.nombre}, estas son tus reservas!`}
+              </h2>
 
-            <ul className="space-y-4">
-              {reservas.map((reserva) => (
-                <li
-                  key={reserva._id}
-                  className="bg-gray-700 p-4 rounded-lg text-white shadow-md"
-                >
-                  {usuario?.rol === "admin" && (
-                    <div>
-                      <strong>Usuario:</strong> {reserva.usuarioId?.nombre}
-                    </div>
-                  )}
-                  <div>
-                    <strong>Fecha y hora:</strong>{" "}
-                    {formatearFecha(reserva.fechaHora)}
-                  </div>
-                  <div>
-                    <strong>Estado:</strong> {reserva.estado}
-                  </div>
-                  <div>
-                    <strong>Para:</strong> MUSCULACIÓN
-                  </div>
-                  <button
-                    className="mt-3 bg-red-600 hover:bg-red-700 text-white py-1 px-4 rounded transition"
-                    onClick={() => cancelarReserva(reserva._id)}
+              <ul className="space-y-6">
+                {reservas.map((reserva) => (
+                  <li
+                    key={reserva._id}
+                    className="bg-gray-700 bg-opacity-90 p-6 rounded-2xl text-white shadow-lg hover:shadow-2xl transition-shadow"
                   >
-                    Cancelar Reserva
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </>
-        ) : (
-          <h3 className="text-white text-center text-xl">
-            No tenés reservas por ahora.
-          </h3>
-        )}
+                    {usuario?.rol === "admin" && (
+                      <div>
+                        <strong>Usuario:</strong> {reserva.usuarioId?.nombre}
+                      </div>
+                    )}
+                    <div>
+                      <strong>Fecha y hora:</strong>{" "}
+                      {formatearFecha(reserva.fechaHora)}
+                    </div>
+                    <div>
+                      <strong>Estado:</strong> {reserva.estado}
+                    </div>
+                    <div>
+                      <strong>Para:</strong> MUSCULACIÓN
+                    </div>
+                    <button
+                      className="mt-4 bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-5 rounded-full shadow-md transition-colors"
+                      onClick={() => cancelarReserva(reserva._id)}
+                    >
+                      Cancelar Reserva
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </>
+          ) : (
+            <h3 className="text-white text-center text-xl mt-20">
+              No hay reservas por ahora.
+            </h3>
+          )}
 
-        <div className="mt-6 text-center">
-          <a
-            href="/reservas/nuevareserva"
-            className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded shadow-md transition"
-          >
-            Reservar nuevo turno
-          </a>
+          <div className="mt-10 text-center">
+            <a
+              href="/reservas/nuevareserva"
+              className="bg-amber-400 hover:bg-amber-500 text-black font-semibold px-6 py-3 rounded-full shadow-md transition"
+            >
+              Reservar nuevo turno
+            </a>
+          </div>
         </div>
       </div>
     </>

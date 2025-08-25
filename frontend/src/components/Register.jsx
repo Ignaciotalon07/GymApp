@@ -33,10 +33,20 @@ export default function Register() {
       style={{ backgroundImage: `url(${bgLogin})` }}
     >
       <div className="flex w-full">
+        {/* Frase motivadora */}
+        <div className="w-1/2  text-gray-300 p-10 flex flex-col justify-center items-center text-center">
+          <h2 className="text-5xl text-white font-extrabold mb-4 leading-tight drop-shadow-lg">
+            Tu progreso empieza ahora
+          </h2>
+          <p className="text-lg text-gray-200 max-w-md">
+            Registrate, reserva tu lugar, entrena enfocado y convertite en tu
+            mejor versión. ¡Bienvenido!
+          </p>
+        </div>
         {/* Formulario de registro */}
         <div className="w-1/2 flex items-center justify-center text-white ">
-          <div className="flex flex-col items-center justify-center w-full min-h-screen max-w-md bg-[#1f2937]/97 gap-8">
-            <h1 className="text-4xl font-bold text-center">Registrate</h1>
+          <div className="flex flex-col items-center justify-center w-full h-full max-w-md  bg-[#1f2935]/75 gap-10 rounded-4xl">
+            <h1 className="text-4xl font-thin text-center mt-10">Registrate</h1>
 
             <form onSubmit={handleSubmit} className="space-y-5 w-2/3">
               <div>
@@ -95,24 +105,13 @@ export default function Register() {
               </button>
             </form>
 
-            <p className="mt-4 text-center text-sm text-gray-400">
+            <p className="mb-8 text-center text-sm text-gray-400">
               ¿Ya tenés cuenta?{" "}
-              <a href="/" className="text-blue-400 hover:underline">
+              <a href="/" className="text-blue-400 hover:underline ">
                 Iniciá sesión
               </a>
             </p>
           </div>
-        </div>
-
-        {/* Frase motivadora */}
-        <div className="w-1/2 bg-black/40 text-white p-10 flex flex-col justify-center items-center text-center">
-          <h2 className="text-5xl font-extrabold mb-4">
-            Tu progreso empieza ahora
-          </h2>
-          <p className="text-lg text-gray-200 max-w-md">
-            Registrate, reserva tu lugar, entrena enfocado y convertite en tu
-            mejor versión. ¡Bienvenido!
-          </p>
         </div>
       </div>
     </div>

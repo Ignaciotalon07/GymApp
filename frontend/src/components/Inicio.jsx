@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Nav from "./Nav";
 
 //IMG HERO
@@ -20,8 +21,15 @@ import sucursales from "../assets/location.svg";
 import fire from "../assets/fire.svg";
 import training from "../assets/training.svg";
 
+// IMG ENTRENADORES
+import profemuscu from "../assets/profemuscu.jpg";
+import profecrossfit from "../assets/profecrossfit.jpg";
+import profeboxeo from "../assets/profeboxeo.jpg";
+import profeyoga from "../assets/profeyoga.jpg";
+
 export default function Inicio() {
   const [usuario, setUsuario] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchUsuario = async () => {
@@ -53,17 +61,36 @@ export default function Inicio() {
 
       <main className=" space-y-10">
         {/* Banner principal */}
-        <section className="relative my-8">
+        <section className="relative m-8 rounded-lg shadow-lg overflow-hidden h-[600px]">
+          {/* Imagen de fondo */}
           <img
             src={gymBanner}
             alt="Gym Banner"
-            className="w-full h-150 object-cover "
+            className="w-full h-full object-cover brightness-35"
           />
-          <div className="absolute inset-0  flex items-center justify-center rounded-lg">
-            <h1 className="text-red-600 text-6xl font-bold text-center">
-              Hola{usuario ? ` ${usuario.nombre}` : ""}, <br></br> Bienvenido a
-              GymMaster!
+
+          {/* Texto encima */}
+          <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-6">
+            <h1 className="text-white text-7xl mb-4 tracking-widest font-thin">
+              ¡Hola{usuario ? ` ${usuario.nombre}!` : ""}
             </h1>
+            <h2 className="text-red-400 text-5xl font-bold m-2">
+              Bienvenido a GymMaster
+            </h2>
+            <p className="mt-4 text-lg text-white">
+              Tu lugar para alcanzar tu Mejor Version. <br /> gestiona tus
+              reservas, elegi el entrenamiento que mas te guste y comenza ahora!
+            </p>
+            <button
+              onClick={() => navigate("/reservas")}
+              className={`px-8 py-3 rounded-xl transition-colors cursor-pointer m-10 font-semibold ${
+                usuario?.rol === "admin"
+                  ? "bg-amber-400 hover:bg-amber-600 text-black"
+                  : "bg-red-500 hover:bg-red-700 text-white"
+              }`}
+            >
+              {usuario?.rol === "admin" ? "VER RESERVAS" : "RESERVAR CLASE"}
+            </button>
           </div>
         </section>
 
@@ -95,7 +122,7 @@ export default function Inicio() {
             ].map((plan, idx) => (
               <div
                 key={idx}
-                className="bg-gray-800 rounded-2xl overflow-hidden shadow-lg transform hover:-translate-y-2 transition-all duration-300 hover:shadow-[0_0_20px_rgba(255,191,0,0.7)]"
+                className="bg-gray-800 rounded-2xl shadow-lg overflow-hidden transform hover:scale-105 hover:shadow-yellow-400 transition duration-300"
               >
                 {/* Imagen */}
                 <img
@@ -184,6 +211,72 @@ export default function Inicio() {
           </button>
         </section>
 
+        {/* ENTRENADORES */}
+        <section className="py-16  text-white">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold tracking-wide mb-4">
+              Nuestros Entrenadores
+            </h2>
+            <p className="text-gray-400">
+              Conocé a los profes que te van a guiar en tu camino
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 px-6">
+            {/* Card 1 */}
+            <div className="bg-gray-800 rounded-2xl shadow-lg overflow-hidden transform hover:scale-105 hover:shadow-yellow-400 transition duration-300">
+              <img
+                src={profemuscu}
+                alt="Entrenador 1"
+                className="w-full h-56 object-cover"
+              />
+              <div className="p-6 text-center">
+                <h3 className="text-2xl font-semibold mb-2">Lucas Fernández</h3>
+                <p className="text-gray-400">Especialista en Musculación</p>
+              </div>
+            </div>
+
+            {/* Card 2 */}
+            <div className="bg-gray-800 rounded-2xl shadow-lg overflow-hidden transform hover:scale-105 hover:shadow-yellow-400 transition duration-300">
+              <img
+                src={profecrossfit}
+                alt="Entrenador 2"
+                className="w-full h-56 object-cover"
+              />
+              <div className="p-6 text-center">
+                <h3 className="text-2xl font-semibold mb-2">Jorge Almiron</h3>
+                <p className="text-gray-400">Coach de CrossFit</p>
+              </div>
+            </div>
+
+            {/* Card 3 */}
+            <div className="bg-gray-800 rounded-2xl shadow-lg overflow-hidden transform hover:scale-105 hover:shadow-yellow-400 transition duration-300">
+              <img
+                src={profeyoga}
+                alt="Entrenador 3"
+                className="w-full h-56 object-cover"
+              />
+              <div className="p-6 text-center">
+                <h3 className="text-2xl font-semibold mb-2">Sofía Méndez</h3>
+                <p className="text-gray-400">Instructora de Yoga</p>
+              </div>
+            </div>
+
+            {/* Card 4 */}
+            <div className="bg-gray-800 rounded-2xl shadow-lg overflow-hidden transform hover:scale-105 hover:shadow-yellow-400 transition duration-300">
+              <img
+                src={profeboxeo}
+                alt="Entrenador 4"
+                className="w-full h-56 object-cover"
+              />
+              <div className="p-6 text-center">
+                <h3 className="text-2xl font-semibold mb-2">Martina Lopez</h3>
+                <p className="text-gray-400">Entrenadora de Boxeo</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* MAS SOBRE NOSOTROS */}
         <section
           id="sobre-nosotros"
@@ -232,7 +325,10 @@ export default function Inicio() {
           <h2 className="text-3xl font-bold mb-5">Preguntas Frecuentes</h2>
           <div className="space-y-4">
             {/* Pregunta 1 */}
-            <details className="group bg-white hover:bg-amber-300 open:bg-amber-200 p-4 rounded-lg shadow cursor-pointer transition-colors duration-300">
+            <details
+              className="group bg-white hover:bg-amber-300 open:bg-amber-200 p-4 rounded-lg shadow cursor-pointer transition-colors duration-300"
+              id="horarios"
+            >
               <summary className="font-semibold text-lg">
                 ¿Cuál es el horario del gimnasio?
               </summary>
@@ -308,6 +404,63 @@ export default function Inicio() {
               referrerPolicy="no-referrer-when-downgrade"
             ></iframe>
           </div>
+        </section>
+
+        {/* CONTACTO */}
+        <section className="bg-gray-900 text-white py-16 px-6" id="contacto">
+          <div className="max-w-3xl mx-auto text-center mb-10">
+            <h2 className="text-4xl font-bold mb-4">📩 Contáctanos</h2>
+            <p className="text-gray-400">
+              ¿Tenés dudas, consultas o querés más información? Completá el
+              formulario y te responderemos a la brevedad.
+            </p>
+          </div>
+
+          <form className="max-w-2xl mx-auto bg-gray-800 p-8 rounded-2xl shadow-lg space-y-6">
+            {/* Nombre */}
+            <div>
+              <label className="block text-left mb-2 text-gray-300">
+                Nombre
+              </label>
+              <input
+                type="text"
+                placeholder="Tu nombre"
+                className="w-full p-3 rounded-lg bg-gray-700 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-pink-500"
+              />
+            </div>
+
+            {/* Email */}
+            <div>
+              <label className="block text-left mb-2 text-gray-300">
+                Email
+              </label>
+              <input
+                type="email"
+                placeholder="Tu email"
+                className="w-full p-3 rounded-lg bg-gray-700 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-pink-500"
+              />
+            </div>
+
+            {/* Mensaje */}
+            <div>
+              <label className="block text-left mb-2 text-gray-300">
+                Mensaje
+              </label>
+              <textarea
+                rows="4"
+                placeholder="Escribí tu mensaje..."
+                className="w-full p-3 rounded-lg bg-gray-700 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-pink-500"
+              ></textarea>
+            </div>
+
+            {/* Botón */}
+            <button
+              type="submit"
+              className="w-full py-3 rounded-lg bg-gradient-to-r from-pink-500 to-purple-600 font-semibold hover:opacity-90 transition"
+            >
+              Enviar mensaje
+            </button>
+          </form>
         </section>
       </main>
     </>

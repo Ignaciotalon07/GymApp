@@ -70,8 +70,8 @@ export default function Login() {
 
       {/* LADO DERECHO - FORMULARIO */}
       <div className="w-1/2 flex items-center justify-center ">
-        <div className="flex flex-col items-center justify-center w-full min-h-screen max-w-md bg-[#1f2937]/97 backdrop-blur-md gap-8 shadow-lg">
-          <h1 className="text-3xl font-bold text-center text-white">
+        <div className="flex flex-col items-center justify-center w-full min-h-2/3 max-w-md bg-[#1f2935]/80  gap-8 rounded-4xl shadow-lg">
+          <h1 className="text-4xl font-thin text-center text-white">
             Iniciar sesión
           </h1>
 
@@ -116,12 +116,17 @@ export default function Login() {
             </button>
           </form>
 
-          <p className="mt-6 text-center text-sm text-gray-400">
-            ¿No tenés cuenta?{" "}
-            <a href="/register" className="text-blue-400 hover:underline">
-              Registrate
+          <div className="mt-6 text-center text-sm text-gray-400">
+            <a href="" className="text-blue-400 hover:underline ">
+              ¿Olvidaste tu contraseña?
             </a>
-          </p>
+            <p className="m-1 text-base">
+              ¿No tenés cuenta? {""}
+              <a href="/register" className="text-blue-400 hover:underline">
+                Registrate
+              </a>
+            </p>
+          </div>
         </div>
       </div>
     </div>

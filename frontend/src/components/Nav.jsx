@@ -23,10 +23,10 @@ export default function Nav({ usuario }) {
   };
 
   return (
-    <nav className="px-6 py-6 flex items-center justify-between">
+    <nav className="px-6 py-8 flex items-center justify-between">
       <div>
         <h1
-          className="text-blue-400 text-2xl font-bold cursor-pointer"
+          className="text-amber-300 text-3xl font-bold cursor-pointer ml-10"
           onClick={() => navigate("/inicio")}
         >
           GymMaster
@@ -58,22 +58,13 @@ export default function Nav({ usuario }) {
 
       {/* Derecha - Botón y perfil */}
       <div className="flex items-center space-x-4">
-        <button
-          onClick={() => navigate("/reservas")}
-          className={`px-4 py-2 rounded transition-colors cursor-pointer ${
-            usuario?.rol === "admin"
-              ? "bg-amber-400 hover:bg-amber-600 text-black"
-              : "bg-red-500 hover:bg-red-700 text-white"
-          }`}
-        >
-          {usuario?.rol === "admin" ? "Ver Reservas" : "Reservar clase"}
-        </button>
-
         <button onClick={() => setMenuOpen(true)}>
           <img
             src={profile2}
             alt="Perfil"
-            className="w-10 h-10 rounded-full cursor-pointer"
+            className="w-10 h-10 rounded-full cursor-pointer 
+             hover:scale-125 hover:shadow-lg hover:shadow-yellow-400/50 
+             transition-transform duration-300 ease-in-out"
           />
         </button>
       </div>
@@ -105,7 +96,7 @@ export default function Nav({ usuario }) {
               href="/reservas"
               className="hover:text-red-600 transition-colors duration-200"
             >
-              Mis Reservas
+              {usuario?.rol === "admin" ? "Ver Reservas" : "Reservar Clase"}
             </a>
           </li>
           <li>

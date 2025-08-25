@@ -51,7 +51,7 @@ export default function Reservas() {
       {usuario && <Nav usuario={usuario} />}
 
       <div
-        className={`relative max-w-6xl mx-auto py-40 px-6 min-h-screen rounded-lg shadow-lg overflow-hidden ${
+        className={`relative max-w-6xl mx-auto py-40 m-5 px-6 min-h-screen rounded-lg shadow-lg overflow-hidden ${
           usuario?.rol === "admin" ? "bg-gray-900" : "bg-gray-800"
         }`}
       >

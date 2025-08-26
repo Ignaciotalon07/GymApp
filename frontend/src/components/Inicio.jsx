@@ -119,33 +119,53 @@ export default function Inicio() {
                 price: "$12.000 / mes",
                 img: planOnlineImg,
               },
-            ].map((plan, idx) => (
-              <div
-                key={idx}
-                className="bg-gray-800 rounded-2xl shadow-lg overflow-hidden transform hover:scale-105 hover:shadow-yellow-400 transition duration-300"
-              >
-                {/* Imagen */}
-                <img
-                  src={plan.img}
-                  alt={plan.title}
-                  className="w-full h-100 object-cover"
-                />
+            ].map((plan, idx) => {
+              // Número de WhatsApp (cambiálo por el tuyo)
+              const phoneNumber = "543512049674";
 
-                {/* Contenido */}
-                <div className="p-6 text-center">
-                  <h3 className="font-bold text-2xl text-blue-600 mb-2">
-                    {plan.title}
-                  </h3>
-                  <p className="mb-4 text-white">{plan.desc}</p>
-                  <p className="text-2xl font-extrabold text-gray-800 mb-4">
-                    {plan.price}
-                  </p>
-                  <button className="px-6 py-2 bg-blue-600 text-white rounded-xl font-semibold hover:bg-blue-700 transition">
-                    Elegir Plan
-                  </button>
+              // Mensaje dinámico
+              const message = `Hola GymMaster! Estoy interesado en el ${plan.title}...`;
+
+              // Encodeamos para URL
+              const whatsappLink = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
+                message
+              )}`;
+
+              return (
+                <div
+                  key={idx}
+                  className="bg-gray-800 rounded-2xl shadow-lg overflow-hidden transform hover:scale-105 hover:shadow-yellow-400 transition duration-300"
+                >
+                  {/* Imagen */}
+                  <img
+                    src={plan.img}
+                    alt={plan.title}
+                    className="w-full h-100 object-cover"
+                  />
+
+                  {/* Contenido */}
+                  <div className="p-6 text-center">
+                    <h3 className="font-bold text-2xl text-blue-600 mb-2">
+                      {plan.title}
+                    </h3>
+                    <p className="mb-4 text-white">{plan.desc}</p>
+                    <p className="text-2xl font-extrabold text-gray-800 mb-4">
+                      {plan.price}
+                    </p>
+
+                    {/* Botón WhatsApp */}
+                    <a
+                      href={whatsappLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-6 py-2 bg-blue-600 text-white rounded-xl font-semibold hover:bg-blue-700 transition"
+                    >
+                      Elegir Plan
+                    </a>
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </section>
 

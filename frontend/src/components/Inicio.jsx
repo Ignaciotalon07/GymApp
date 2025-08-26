@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Nav from "./Nav";
+import { HashLink } from "react-router-hash-link";
 
 //IMG HERO
 import gymBanner from "../assets/bghero.jpg";
@@ -227,7 +228,9 @@ export default function Inicio() {
           </div>
 
           <button className="text-white font-bold text-xl bg-red-500 hover:bg-red-700 cursor-pointer mt-10 rounded-2xl px-8 py-2">
-            <a href="#contacto">Contactanos</a>
+            <HashLink smooth to="#contacto" className="hover:text-yellow-400">
+              Contactanos
+            </HashLink>
           </button>
         </section>
 

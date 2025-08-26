@@ -207,12 +207,12 @@ export default function Inicio() {
           </div>
 
           <button className="text-white font-bold text-xl bg-red-500 hover:bg-red-700 cursor-pointer mt-10 rounded-2xl px-8 py-2">
-            Contactanos
+            <a href="#contacto">Contactanos</a>
           </button>
         </section>
 
         {/* ENTRENADORES */}
-        <section className="py-16  text-white">
+        <section id="entrenadores" className="py-16  text-white">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold tracking-wide mb-4">
               Nuestros Entrenadores
@@ -285,7 +285,7 @@ export default function Inicio() {
           <div className="max-w-3xl mx-auto text-center space-y-4">
             <h2 className="text-4xl font-bold">Más sobre nosotros</h2>
             <p className="text-lg text-gray-300">
-              En OnFit llevamos la experiencia premium a otro nivel, conocé
+              En GymMaster llevamos la experiencia premium a otro nivel, conocé
               nuestras instalaciones y unite a la comunidad.
             </p>
           </div>
@@ -386,7 +386,7 @@ export default function Inicio() {
 
         {/* UBICACION */}
         <section id="ubicacion" className="bg-gray-100 p-6 ">
-          <h2 className="text-2xl font-bold mb-4">Nuestra Ubicación</h2>
+          <h2 className="text-4xl font-bold mb-4">Nuestra Ubicación</h2>
           <p className="mb-4">
             Estamos en Av. Siempre Viva 123, Cordoba, Argentina. A metros de
             plaza españa, contamos con estacionamiento disponible.

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import profile2 from "../assets/profile2.svg";
+import { HashLink } from "react-router-hash-link";
 
 export default function Nav({ usuario }) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -13,46 +14,41 @@ export default function Nav({ usuario }) {
     window.location.href = "/";
   };
 
-  // Función para manejar scroll a secciones
-  const scrollToSection = (id) => {
-    navigate("/inicio"); // aseguramos estar en /inicio
-    setTimeout(() => {
-      const el = document.getElementById(id);
-      if (el) el.scrollIntoView({ behavior: "smooth" });
-    }, 100); // pequeño delay para que la página cargue
-  };
-
   return (
     <nav className="px-6 py-8 flex items-center justify-between">
       <div>
-        <h1
-          className="text-amber-300 text-3xl font-bold cursor-pointer ml-10"
-          onClick={() => navigate("/inicio")}
-        >
-          GymMaster
+        <h1 className="text-amber-300 text-3xl font-bold cursor-pointer ml-10">
+          <HashLink smooth to="/inicio/#" className="hover:text-yellow-400">
+            GymMaster
+          </HashLink>{" "}
         </h1>
       </div>
 
       <div className="flex space-x-8 text-lg font-medium">
-        <button
-          onClick={() => navigate("/inicio")}
-          className="cursor-pointer px-4 py-2 text-white hover:text-red-500 transition-colors duration-300"
-        >
-          Inicio
+        <button className="cursor-pointer px-4 py-2 text-white hover:text-red-500 transition-colors duration-300">
+          <HashLink smooth to="/inicio/#" className="hover:text-yellow-400">
+            Inicio
+          </HashLink>
         </button>
 
-        <button
-          onClick={() => scrollToSection("planes")}
-          className="cursor-pointer px-4 py-2 text-white hover:text-red-500 transition-colors duration-300"
-        >
-          Planes
+        <button className="cursor-pointer px-4 py-2 text-white hover:text-red-500 transition-colors duration-300">
+          <HashLink
+            smooth
+            to="/inicio/#planes"
+            className="hover:text-yellow-400"
+          >
+            Planes
+          </HashLink>
         </button>
 
-        <button
-          onClick={() => scrollToSection("contacto")}
-          className="cursor-pointer px-4 py-2 text-white hover:text-red-500 transition-colors duration-300"
-        >
-          Contacto
+        <button className="cursor-pointer px-4 py-2 text-white hover:text-red-500 transition-colors duration-300">
+          <HashLink
+            smooth
+            to="/inicio/#contacto"
+            className="hover:text-yellow-400"
+          >
+            Contacto
+          </HashLink>
         </button>
       </div>
 
@@ -100,52 +96,45 @@ export default function Nav({ usuario }) {
             </a>
           </li>
           <li>
-            <a
-              href="#"
-              className="hover:text-red-600 transition-colors duration-200"
-            >
-              Horarios
-            </a>
-          </li>
-          <li>
-            <a
-              href="#"
-              className="hover:text-red-600 transition-colors duration-200"
+            <HashLink
+              smooth
+              to="/inicio#entrenadores"
+              className="hover:text-yellow-400"
             >
               Entrenadores
-            </a>
+            </HashLink>
           </li>
           <li>
-            <a
-              href="#"
-              className="hover:text-red-600 transition-colors duration-200"
+            <HashLink
+              smooth
+              to="/inicio#ubicacion"
+              className="hover:text-yellow-400"
             >
               Ubicacion
-            </a>
+            </HashLink>
           </li>
           <li>
-            <a
-              href="#"
-              className="hover:text-red-600 transition-colors duration-200"
-            >
+            <HashLink smooth to="/inicio#faq" className="hover:text-yellow-400">
               Preguntas Frecuentes
-            </a>
+            </HashLink>
           </li>
           <li>
-            <a
-              href="#"
-              className="hover:text-red-600 transition-colors duration-200"
+            <HashLink
+              smooth
+              to="/inicio#sobre-nosotros"
+              className="hover:text-yellow-400"
             >
               Sobre Nosotros
-            </a>
+            </HashLink>
           </li>
           <li>
-            <a
-              href="#"
-              className="hover:text-red-600 transition-colors duration-200"
+            <HashLink
+              smooth
+              to="/inicio#contacto"
+              className="hover:text-yellow-400"
             >
-              Contactanos
-            </a>
+              Contacto
+            </HashLink>
           </li>
           <li>
             <button

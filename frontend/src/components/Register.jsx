@@ -20,8 +20,8 @@ export default function Register() {
 
       if (!res.ok) throw new Error("Error al registrarse");
 
-      // Redirigir al login o directo a /reservas si querés
-      navigate("/"); // o navigate("/reservas");
+      // Redirigir al login
+      navigate("/");
     } catch (err) {
       console.error(err.message);
     }

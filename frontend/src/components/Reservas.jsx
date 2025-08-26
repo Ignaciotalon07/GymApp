@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import Nav from "./Nav.jsx";
-import reservas from "../assets/reservas.jpg";
 
 export default function Reservas() {
   const location = useLocation();

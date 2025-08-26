@@ -1,4 +1,5 @@
 import React from "react";
+import { HashLink } from "react-router-hash-link";
 
 export default function Footer() {
   return (
@@ -22,19 +23,27 @@ export default function Footer() {
           </h3>
           <ul className="space-y-2 text-gray-300">
             <li>
-              <a href="#" className="hover:text-amber-400 transition">
+              <HashLink smooth to="/inicio/#" className="hover:text-yellow-400">
                 Inicio
-              </a>
+              </HashLink>
             </li>
             <li>
-              <a href="/reservas" className="hover:text-amber-400 transition">
+              <HashLink
+                smooth
+                to="/reservas/#"
+                className="hover:text-yellow-400"
+              >
                 Reservas
-              </a>
+              </HashLink>
             </li>
             <li>
-              <a href="#contacto" className="hover:text-amber-400 transition">
+              <HashLink
+                smooth
+                to="/inicio/#contacto"
+                className="hover:text-yellow-400"
+              >
                 Contacto
-              </a>
+              </HashLink>
             </li>
           </ul>
         </div>
@@ -93,6 +102,23 @@ export default function Footer() {
                 viewBox="0 0 24 24"
               >
                 <path d="M22.162 5.656c-.793.352-1.644.59-2.538.697a4.486 4.486 0 001.965-2.476 9.02 9.02 0 01-2.828 1.082 4.513 4.513 0 00-7.688 4.113 12.806 12.806 0 01-9.297-4.711 4.506 4.506 0 001.395 6.021 4.49 4.49 0 01-2.045-.567v.057a4.516 4.516 0 003.618 4.424 4.51 4.51 0 01-2.038.077 4.517 4.517 0 004.214 3.135 9.046 9.046 0 01-5.594 1.926c-.362 0-.72-.021-1.074-.063a12.772 12.772 0 006.918 2.03c8.303 0 12.84-6.875 12.84-12.841 0-.196-.004-.392-.013-.587a9.164 9.164 0 002.248-2.333z" />
+              </svg>
+            </a>
+
+            {/* WhatsApp */}
+            <a
+              href="https://wa.me/543512049674" //
+              target="_blank"
+              rel="noreferrer"
+              className="bg-green-500 p-3 rounded-full hover:scale-110 transition-transform shadow-lg"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6 text-white"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path d="M12 2C6.486 2 2 6.19 2 11.352c0 1.95.586 3.77 1.635 5.36L2 22l5.504-1.44A9.94 9.94 0 0012 20.705c5.514 0 10-4.19 10-9.353C22 6.19 17.514 2 12 2zm0 16.93a8.14 8.14 0 01-4.146-1.137l-.297-.176-3.267.855.872-3.094-.194-.317A7.08 7.08 0 014 11.352C4 7.25 7.582 4 12 4s8 3.25 8 7.352-3.582 7.578-8 7.578zm4.367-5.442c-.237-.118-1.406-.695-1.624-.774-.218-.079-.377-.118-.535.118-.158.237-.615.774-.754.932-.138.158-.277.178-.514.059-.237-.118-.999-.368-1.902-1.174-.703-.627-1.178-1.401-1.317-1.637-.138-.237-.015-.365.104-.483.106-.105.237-.277.356-.415.119-.139.158-.237.237-.396.079-.158.04-.297-.02-.415-.059-.118-.535-1.287-.733-1.763-.193-.465-.39-.402-.535-.41-.138-.007-.297-.009-.456-.009-.158 0-.415.059-.633.297-.218.237-.832.813-.832 1.983s.852 2.302.97 2.46c.119.158 1.676 2.618 4.06 3.672.568.245 1.01.391 1.354.5.569.181 1.087.156 1.497.095.456-.068 1.406-.574 1.604-1.127.198-.554.198-1.028.139-1.127-.06-.099-.218-.158-.456-.277z" />
               </svg>
             </a>
           </div>

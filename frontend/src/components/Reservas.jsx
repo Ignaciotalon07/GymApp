@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import Nav from "./Nav.jsx";
+import fondoreserva from "../assets/fondoreservas.jpg";
 
 export default function Reservas() {
   const location = useLocation();
@@ -50,25 +51,35 @@ export default function Reservas() {
       {usuario && <Nav usuario={usuario} />}
 
       <div
-        className={`relative max-w-6xl mx-auto py-40 m-5 px-6 min-h-screen rounded-lg shadow-lg overflow-hidden ${
-          usuario?.rol === "admin" ? "bg-gray-900" : "bg-gray-800"
-        }`}
+        className={`relative max-w-6xl mx-auto py-40 m-5 px-6 min-h-screen rounded-lg shadow-lg overflow-hidden`}
       >
-        {/* Imagen de fondo con overlay */}
+        {/* Imagen de fondo */}
         <div
-          className="absolute inset-0 bg-cover bg-center opacity-20"
+          className="absolute inset-0 bg-cover bg-center z-0"
           style={{
-            backgroundImage: `url(${reservas})`,
+            backgroundImage: `url(${fondoreserva})`,
           }}
-        ></div>
+        >
+          {/* Overlay semitransparente para contraste */}
+          <div className="absolute inset-0 bg-black/40"></div>
+        </div>
+
+        {/* Contenido encima */}
         <div className="relative z-10">
           {reservas.length > 0 ? (
             <>
-              <h2 className="text-3xl font-bold text-white mb-6 text-center">
+              <h2 className="text-4xl font-bold text-white mb-10  text-center">
                 {usuario?.rol === "admin"
                   ? "Estas son todas las reservas de los usuarios"
                   : `${usuario?.nombre}, estas son tus reservas!`}
               </h2>
+
+              {usuario?.rol !== "admin" && (
+                <p className="text-lg text-gray-300 mb-6 text-center italic">
+                  No olvides tu botella de agua y tu toalla. ¡Dale con todo a tu
+                  entrenamiento hoy!
+                </p>
+              )}
 
               <ul className="space-y-6">
                 {reservas.map((reserva) => (
@@ -78,7 +89,8 @@ export default function Reservas() {
                   >
                     {usuario?.rol === "admin" && (
                       <div>
-                        <strong>Usuario:</strong> {reserva.usuarioId?.nombre}
+                        <strong>Usuario:</strong> {reserva.usuarioId?.nombre}{" "}
+                        {reserva.usuarioId?.apellido}
                       </div>
                     )}
                     <div>

@@ -4,6 +4,7 @@ import bgLogin from "../assets/fondogym2.jpg";
 
 export default function Register() {
   const [nombre, setNombre] = useState("");
+  const [apellido, setApellido] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -15,7 +16,7 @@ export default function Register() {
         method: "POST",
         credentials: "include",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ nombre, email, password }),
+        body: JSON.stringify({ nombre, apellido, email, password }),
       });
 
       if (!res.ok) throw new Error("Error al registrarse");
@@ -64,7 +65,21 @@ export default function Register() {
                   placeholder="Tu nombre"
                 />
               </div>
-
+              <div>
+                <label htmlFor="apellido" className="block text-sm font-medium">
+                  Apellido
+                </label>
+                <input
+                  type="text"
+                  name="apellido"
+                  id="apellido"
+                  required
+                  value={apellido}
+                  onChange={(e) => setApellido(e.target.value)}
+                  className="w-full mt-1 px-4 py-2 rounded-md bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  placeholder="Tu apellido"
+                />
+              </div>
               <div>
                 <label htmlFor="email" className="block text-sm font-medium">
                   Email

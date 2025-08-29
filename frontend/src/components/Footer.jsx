@@ -1,4 +1,3 @@
-import React from "react";
 import { HashLink } from "react-router-hash-link";
 
 export default function Footer() {
@@ -8,7 +7,9 @@ export default function Footer() {
         {/* Logo / Nombre */}
         <div>
           <h2 className="text-3xl font-extrabold text-amber-400">
-            <a href="#">GymMaster</a>
+            <HashLink smooth to="/inicio/#" className="hover:text-yellow-400">
+              GymMaster
+            </HashLink>
           </h2>
           <p className="text-gray-400 mt-2">
             Elevando tu entrenamiento al siguiente nivel. Unite a nuestra
@@ -51,7 +52,7 @@ export default function Footer() {
         {/* Redes sociales */}
         <div>
           <h3 className="text-lg font-semibold mb-4 text-amber-300">
-            Seguinos
+            Nuestras redes
           </h3>
           <div className="flex justify-center md:justify-start space-x-5">
             {/* Instagram */}

@@ -47,12 +47,18 @@ router.post("/login", async (req, res) => {
 router.get("/me", verificarToken, (req, res) => {
   // req.usuario lo pone el middleware
   if (!req.usuario) return res.status(401).json({ error: "No autenticado" });
-  res.json({ usuario: { nombre: req.usuario.nombre, rol: req.usuario.rol } });
+  res.json({
+    usuario: {
+      nombre: req.usuario.nombre,
+      apellido: req.usuario.apellido,
+      rol: req.usuario.rol,
+    },
+  });
 });
 
 // POST /api/auth/register
 router.post("/register", async (req, res) => {
-  const { nombre, email, password } = req.body;
+  const { nombre, apellido, email, password } = req.body;
 
   try {
     // Verificar si ya existe el usuario
@@ -67,6 +73,7 @@ router.post("/register", async (req, res) => {
     // Crear nuevo usuario
     const nuevoUsuario = new Usuario({
       nombre,
+      apellido,
       email,
       password: hashedPassword,
     });
@@ -93,12 +100,3 @@ router.post("/register", async (req, res) => {
 });
 
 module.exports = router;
-
-// GET /api/auth/user
-// router.get("/user", async (req, res) => {
-//   if (req.usuario) {
-//     res.json({ usuario: req.usuario });
-//   } else {
-//     res.status(401).json({ error: "No autenticado" });
-//   }
-// });

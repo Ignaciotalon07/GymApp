@@ -62,7 +62,7 @@ export default function Inicio() {
 
       <main className=" space-y-10">
         {/* Banner principal */}
-        <section className="relative m-8 rounded-lg shadow-lg overflow-hidden h-[600px]">
+        <section className="relative mt-4 rounded-lg shadow-lg overflow-hidden h-[600px]">
           {/* Imagen de fondo */}
           <img
             src={gymBanner}
@@ -241,7 +241,7 @@ export default function Inicio() {
               Nuestros Entrenadores
             </h2>
             <p className="text-gray-400">
-              Conocé a los profes que te van a guiar en tu camino
+              Conocé a los profesionales que te van a guiar en tu camino.
             </p>
           </div>
 

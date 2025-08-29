@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 const Usuario = require("../models/user.model.js");
 
 const registrarUsuario = async (req, res) => {
-  const { nombre, email, password } = req.body;
+  const { nombre, apellido, email, password } = req.body;
 
   try {
     //Vemos si existe el usuario
@@ -17,6 +17,7 @@ const registrarUsuario = async (req, res) => {
     //Creamos nuevo usuario
     const nuevoUsuario = new Usuario({
       nombre,
+      apellido,
       email,
       password: hashedPassword,
       rol: "cliente", //TODOS POR DEFECTO ARRANCAN COMO CLIENTES
@@ -55,6 +56,7 @@ const loginUsuario = async (req, res) => {
       {
         id: usuario._id,
         nombre: usuario.nombre,
+        apellido: usuario.apellido,
         rol: usuario.rol,
       },
       process.env.JWT_SECRET,

@@ -7,15 +7,19 @@ const obtenerReservas = async (req, res) => {
     let reservas;
 
     if (req.usuario.rol === "admin") {
-      reservas = await Reserva.find().populate("usuarioId");
+      reservas = await Reserva.find().populate("usuarioId", "nombre apellido");
     } else {
-      reservas = await Reserva.find({ usuarioId: req.usuario._id });
+      reservas = await Reserva.find({ usuarioId: req.usuario._id }).populate(
+        "usuarioId",
+        "nombre apellido"
+      );
     }
 
     res.json({
       reservas,
       usuario: {
         nombre: req.usuario.nombre,
+        apellido: req.usuario.apellido,
         rol: req.usuario.rol,
         _id: req.usuario._id,
       },
@@ -37,11 +41,20 @@ const crearReserva = async (req, res) => {
       return res.status(401).send("Usuario no autenticado");
     }
 
-    const fechaHora = new Date(`${fecha}T${hora}`);
+    // hora viene como "07:00 - 08:00", extraemos solo el inicio
+    const horaInicio = hora.split(" - ")[0]; // "07:00"
+
+    // Construimos fecha con hora de inicio
+    const fechaHora = new Date(`${fecha}T${horaInicio}:00`);
+
+    if (isNaN(fechaHora.getTime())) {
+      return res.status(400).json({ error: "Fecha u hora inválida" });
+    }
 
     const nuevaReserva = new Reserva({
       usuarioId: req.usuario._id,
-      fechaHora,
+      fechaHora, // guardás como Date
+      rangoHora: hora, // opcional: guardás el string "07:00 - 08:00"
     });
 
     await nuevaReserva.save();

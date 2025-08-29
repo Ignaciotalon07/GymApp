@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const usuarioSchema = new mongoose.Schema(
   {
     nombre: { type: String, required: true, trim: true },
+    apellido: { type: String, required: true, trim: true },
     email: {
       type: String,
       required: true,
@@ -14,7 +15,7 @@ const usuarioSchema = new mongoose.Schema(
     rol: { type: String, enum: ["admin", "cliente"], default: "cliente" },
   },
   {
-    timestamps: true, // crea campos createdAt y updatedAt automáticos
+    timestamps: true,
   }
 );
 

@@ -99,7 +99,7 @@ export default function Nav({ usuario }) {
             <HashLink
               smooth
               to="/inicio#entrenadores"
-              className="hover:text-yellow-400"
+              className="hover:text-red-600 "
             >
               Entrenadores
             </HashLink>
@@ -108,13 +108,13 @@ export default function Nav({ usuario }) {
             <HashLink
               smooth
               to="/inicio#ubicacion"
-              className="hover:text-yellow-400"
+              className="hover:text-red-600 "
             >
               Ubicacion
             </HashLink>
           </li>
           <li>
-            <HashLink smooth to="/inicio#faq" className="hover:text-yellow-400">
+            <HashLink smooth to="/inicio#faq" className="hover:text-red-600 ">
               Preguntas Frecuentes
             </HashLink>
           </li>
@@ -122,7 +122,7 @@ export default function Nav({ usuario }) {
             <HashLink
               smooth
               to="/inicio#sobre-nosotros"
-              className="hover:text-yellow-400"
+              className="hover:text-red-600 "
             >
               Sobre Nosotros
             </HashLink>
@@ -131,7 +131,7 @@ export default function Nav({ usuario }) {
             <HashLink
               smooth
               to="/inicio#contacto"
-              className="hover:text-yellow-400"
+              className="hover:text-red-600 "
             >
               Contacto
             </HashLink>

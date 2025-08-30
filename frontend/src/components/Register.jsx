@@ -21,7 +21,6 @@ export default function Register() {
 
       if (!res.ok) throw new Error("Error al registrarse");
 
-      // Redirigir al login
       navigate("/");
     } catch (err) {
       console.error(err.message);
@@ -29,105 +28,211 @@ export default function Register() {
   }
 
   return (
-    <div
-      className="min-h-screen flex items-center justify-center bg-cover bg-center px-4"
-      style={{ backgroundImage: `url(${bgLogin})` }}
-    >
-      <div className="flex w-full">
-        {/* Frase motivadora */}
-        <div className="w-1/2  text-gray-300 p-10 flex flex-col justify-center items-center text-center">
-          <h2 className="text-5xl text-white font-extrabold mb-4 leading-tight drop-shadow-lg">
-            Tu progreso empieza ahora
-          </h2>
-          <p className="text-lg text-gray-200 max-w-md">
-            Registrate, reserva tu lugar, entrena enfocado y convertite en tu
-            mejor versión. ¡Bienvenido!
-          </p>
-        </div>
-        {/* Formulario de registro */}
-        <div className="w-1/2 flex items-center justify-center text-white ">
-          <div className="flex flex-col items-center justify-center w-full h-full max-w-md  bg-[#1f2935]/75 gap-10 rounded-4xl">
-            <h1 className="text-4xl font-thin text-center mt-10">Registrate</h1>
+    <div className="min-h-screen">
+      {/* DESKTOP / TABLET */}
+      <div className="hidden md:flex items-center justify-center bg-cover bg-center px-4 min-h-screen bg-gradient-to-br from-[#4a4a4a] to-[#111111] ">
+        <div className="flex w-full max-w-6xl h-[83vh] shadow-2xl overflow-hidden">
+          {/* FORMULARIO LADO IZQUIERDO */}
+          <div className="w-[40%] bg-black flex flex-col items-center justify-center p-10 relative">
+            <div className="absolute top-6 left-6 flex items-center space-x-2">
+              <span className="text-yellow-400 font-semibold text-1xl">
+                GymMaster
+              </span>
+            </div>
 
-            <form onSubmit={handleSubmit} className="space-y-5 w-2/3">
+            <h1 className="text-4xl font-thin text-white mb-8 text-center mt-10">
+              Registrate
+            </h1>
+
+            <form onSubmit={handleSubmit} className="space-y-5 w-full">
               <div>
-                <label htmlFor="nombre" className="block text-sm font-medium">
+                <label className="block text-sm font-medium text-gray-300 mb-1">
                   Nombre
                 </label>
                 <input
                   type="text"
-                  name="nombre"
-                  id="nombre"
-                  required
                   value={nombre}
                   onChange={(e) => setNombre(e.target.value)}
-                  className="w-full mt-1 px-4 py-2 rounded-md bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  required
                   placeholder="Tu nombre"
-                />
-              </div>
-              <div>
-                <label htmlFor="apellido" className="block text-sm font-medium">
-                  Apellido
-                </label>
-                <input
-                  type="text"
-                  name="apellido"
-                  id="apellido"
-                  required
-                  value={apellido}
-                  onChange={(e) => setApellido(e.target.value)}
-                  className="w-full mt-1 px-4 py-2 rounded-md bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  placeholder="Tu apellido"
-                />
-              </div>
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  id="email"
-                  required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="w-full mt-1 px-4 py-2 rounded-md bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  placeholder="correo@ejemplo.com"
+                  className="w-full px-4 py-2 rounded-xl bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-400"
                 />
               </div>
 
               <div>
-                <label htmlFor="password" className="block text-sm font-medium">
+                <label className="block text-sm font-medium text-gray-300 mb-1">
+                  Apellido
+                </label>
+                <input
+                  type="text"
+                  value={apellido}
+                  onChange={(e) => setApellido(e.target.value)}
+                  required
+                  placeholder="Tu apellido"
+                  className="w-full px-4 py-2 rounded-xl bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-300 mb-1">
+                  Email
+                </label>
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  placeholder="correo@ejemplo.com"
+                  className="w-full px-4 py-2 rounded-xl bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-300 mb-1">
                   Contraseña
                 </label>
                 <input
                   type="password"
-                  name="password"
-                  id="password"
-                  required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full mt-1 px-4 py-2 rounded-md bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  required
                   placeholder="********"
+                  className="w-full px-4 py-2 rounded-xl bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-400"
                 />
               </div>
 
               <button
                 type="submit"
-                className="w-full py-2 bg-blue-600 hover:bg-blue-700 transition duration-300 rounded-md font-semibold text-white"
+                className="w-full py-3 bg-gradient-to-r from-yellow-400 to-orange-300 hover:from-yellow-500 hover:to-orange-400 text-gray-900 font-bold rounded-2xl shadow-lg transition duration-300"
               >
                 Registrarme
               </button>
             </form>
 
-            <p className="mb-8 text-center text-sm text-gray-400">
+            <p className="mt-6 text-center text-sm text-gray-400">
               ¿Ya tenés cuenta?{" "}
-              <a href="/" className="text-blue-400 hover:underline ">
+              <a href="/" className="text-yellow-400 hover:underline">
                 Iniciá sesión
               </a>
             </p>
+
+            <p className="mt-10 text-gray-300 text-xs text-center">
+              © 2025 GymMaster. Todos los derechos reservados.
+            </p>
+          </div>
+
+          {/* IMAGEN + FRASE LADO DERECHO */}
+          <div
+            className="w-[60%] relative flex items-center justify-start"
+            style={{
+              backgroundImage: `url(${bgLogin})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+          >
+            <div className="absolute inset-0 bg-black/40"></div>
+            <div className="relative max-w-lg mb-20 text-center ml-10">
+              <h2 className="text-4xl text-white font-serif mb-4">
+                Tu progreso empieza ahora
+              </h2>
+              <p className="text-gray-200 font-thin text-base">
+                Registrate, reserva tu lugar, entrena enfocado y convertite en
+                tu mejor versión. ¡Bienvenido a GymMaster!
+              </p>
+            </div>
           </div>
         </div>
+      </div>
+
+      {/* MOBILE */}
+      <div className="flex md:hidden flex-col min-h-screen w-full bg-gray-200 items-center justify-center px-4">
+        {/* LOGO + NOMBRE */}
+        <div className="flex items-center space-x-2 mb-6">
+          <span className="text-yellow-500 font-mono text-2xl">
+            Bienvenido a GymMaster
+          </span>
+        </div>
+
+        {/* TÍTULO DE BIENVENIDA */}
+        <p className="text-gray-500 text-center mb-10 w-60 text-sm">
+          Registrate para comenzar con tu nueva forma de vida
+        </p>
+
+        <form onSubmit={handleSubmit} className="space-y-5 w-full max-w-md">
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Nombre
+            </label>
+            <input
+              type="text"
+              value={nombre}
+              onChange={(e) => setNombre(e.target.value)}
+              required
+              placeholder="Tu nombre"
+              className="w-full px-4 py-3 bg-gray-100 text-gray-900 rounded-2xl focus:outline-none focus:ring-2 focus:ring-yellow-400 border border-gray-200"
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Apellido
+            </label>
+            <input
+              type="text"
+              value={apellido}
+              onChange={(e) => setApellido(e.target.value)}
+              required
+              placeholder="Tu apellido"
+              className="w-full px-4 py-3 bg-gray-100 text-gray-900 rounded-2xl focus:outline-none focus:ring-2 focus:ring-yellow-400 border border-gray-200"
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Email
+            </label>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              placeholder="correo@ejemplo.com"
+              className="w-full px-4 py-3 bg-gray-100 text-gray-900 rounded-2xl focus:outline-none focus:ring-2 focus:ring-yellow-400 border border-gray-200"
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Contraseña
+            </label>
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              placeholder="********"
+              className="w-full px-4 py-3 bg-gray-100 text-gray-900 rounded-2xl focus:outline-none focus:ring-2 focus:ring-yellow-400 border border-gray-200"
+            />
+          </div>
+
+          <button
+            type="submit"
+            className="w-full py-3 bg-gradient-to-r from-yellow-400 to-orange-300 hover:from-yellow-500 hover:to-orange-400 text-gray-900 font-bold rounded-2xl shadow-lg transition duration-300"
+          >
+            Registrarme
+          </button>
+        </form>
+
+        <p className="mt-6 text-center text-sm text-gray-500 w-full max-w-md">
+          ¿Ya tenés cuenta?{" "}
+          <a href="/" className="text-yellow-500 hover:underline">
+            Iniciá sesión
+          </a>
+        </p>
+
+        <p className="mt-10 text-gray-400 text-xs text-center">
+          © 2025 GymMaster. Todos los derechos reservados.
+        </p>
       </div>
     </div>
   );

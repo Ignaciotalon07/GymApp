@@ -42,7 +42,7 @@ export default function ChatFlotante() {
   };
 
   return (
-    <div className="fixed bottom-8 right-8 z-50">
+    <div className="fixed bottom-18 right-4 z-50">
       {!abierto ? (
         <button
           onClick={() => {

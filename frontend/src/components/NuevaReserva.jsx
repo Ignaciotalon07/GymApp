@@ -131,7 +131,7 @@ export default function NuevaReserva() {
 
             <button
               type="submit"
-              className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded"
+              className="w-full bg-yellow-500 hover:bg-yellow-600 text-black font-semibold py-2 rounded"
             >
               Guardar reserva
             </button>

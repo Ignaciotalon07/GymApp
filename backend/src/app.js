@@ -25,7 +25,7 @@ const cors = require("cors");
 app.use(
   cors({
     origin: "http://localhost:5173", // donde corre React
-    credentials: true, // si querés enviar cookies/tokens
+    credentials: true,
   })
 );
 

@@ -137,7 +137,10 @@ export default function Register() {
               </h2>
               <p className="text-gray-200 font-thin text-base">
                 Registrate, reserva tu lugar, entrena enfocado y convertite en
-                tu mejor versión. ¡Bienvenido a GymMaster!
+                tu mejor versión.{" "}
+                <span className="text-yellow-300 font-mono">
+                  ¡Bienvenido a GymMaster!
+                </span>
               </p>
             </div>
           </div>

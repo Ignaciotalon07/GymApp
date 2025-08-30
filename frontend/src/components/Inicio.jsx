@@ -62,7 +62,7 @@ export default function Inicio() {
 
       <main className=" space-y-10">
         {/* Banner principal */}
-        <section className="relative mt-4 rounded-lg shadow-lg overflow-hidden h-[600px]">
+        <section className="relative  shadow-lg overflow-hidden h-[720px]">
           {/* Imagen de fondo */}
           <img
             src={gymBanner}
@@ -71,20 +71,25 @@ export default function Inicio() {
           />
 
           {/* Texto encima */}
-          <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-6">
-            <h1 className="text-white text-7xl mb-4 tracking-widest font-thin">
+          <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-6 bg-black/30 ">
+            <h1 className="text-white text-5xl sm:text-7xl md:text-6xl mb-6 tracking-widest font-thin">
               ¡Hola{usuario ? ` ${usuario.nombre}!` : ""}
             </h1>
-            <h2 className="text-red-400 text-5xl font-bold m-2">
+
+            <h2 className="text-yellow-400 text-4xl sm:text-5xl md:text-6xl font-extrabold mb-4 drop-shadow-md">
               Bienvenido a GymMaster
             </h2>
-            <p className="mt-4 text-lg text-white">
-              Tu lugar para alcanzar tu Mejor Version. <br /> gestiona tus
-              reservas, elegi el entrenamiento que mas te guste y comenza ahora!
+
+            <p className="mt-3 text-white text-lg sm:text-xl max-w-2xl leading-relaxed">
+              Tu lugar para alcanzar tu
+              <span className="font-semibold"> Mejor Versión</span>.<br />
+              Gestiona tus reservas y elegi el entrenamiento que más se amolde a
+              tus objetivos. ¡comenzá ahora!
             </p>
+
             <button
               onClick={() => navigate("/reservas")}
-              className={`px-8 py-3 rounded-xl transition-colors cursor-pointer m-10 font-semibold ${
+              className={`mt-8 px-10 py-4 rounded-2xl font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg ${
                 usuario?.rol === "admin"
                   ? "bg-amber-400 hover:bg-amber-600 text-black"
                   : "bg-red-500 hover:bg-red-700 text-white"

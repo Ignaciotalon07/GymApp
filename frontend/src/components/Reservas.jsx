@@ -50,9 +50,7 @@ export default function Reservas() {
     <>
       {usuario && <Nav usuario={usuario} />}
 
-      <div
-        className={`relative max-w-6xl mx-auto py-40 m-5 px-6 min-h-screen rounded-lg shadow-lg overflow-hidden`}
-      >
+      <div className="relative max-w-8xl mx-auto py-40  px-6 min-h-screen  shadow-lg overflow-hidden">
         {/* Imagen de fondo */}
         <div
           className="absolute inset-0 bg-cover bg-center z-0"

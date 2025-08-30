@@ -51,6 +51,7 @@ router.get("/me", verificarToken, (req, res) => {
     usuario: {
       nombre: req.usuario.nombre,
       apellido: req.usuario.apellido,
+      email: req.usuario.email,
       rol: req.usuario.rol,
     },
   });
